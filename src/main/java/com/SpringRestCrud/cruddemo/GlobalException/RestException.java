@@ -29,7 +29,7 @@ public class RestException {
 
        ErrorResponce error=new ErrorResponce();
        error.setStatus(HttpStatus.BAD_REQUEST.value());
-       error.setMessage("not valid input");
+       error.setMessage(exc.getMessage());
        error.setTimeStamp(System.currentTimeMillis());
         return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
     }
