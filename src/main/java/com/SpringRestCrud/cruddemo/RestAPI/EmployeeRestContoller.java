@@ -6,6 +6,9 @@ import com.SpringRestCrud.cruddemo.Entity.Employee;
 import com.SpringRestCrud.cruddemo.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -23,6 +26,13 @@ public class EmployeeRestContoller {
     @GetMapping("/employee") 
     public List<Employee> findAll(){
         return employeeService.findAll(); 
+    }
+
+    @GetMapping("/employee/{empId}")
+
+    public Employee getEmpById(@PathVariable int empId){
+         Employee employee=employeeService.findById(empId);
+         return employee;
     }
     
 }
