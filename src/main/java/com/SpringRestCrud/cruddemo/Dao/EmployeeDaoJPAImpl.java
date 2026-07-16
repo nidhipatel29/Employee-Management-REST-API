@@ -25,6 +25,27 @@ public class EmployeeDaoJPAImpl implements EmployeeDao{
     TypedQuery<Employee> query = entityManager.createQuery("FROM Employee",Employee.class);
         List<Employee> employees=query.getResultList();
         return employees;
-    }   
+    }  
+
+     public Employee findById(int id){
+          
+        Employee employee=entityManager.find(Employee.class, id);
+        return employee;
+
+     }
+
+     public Employee save(Employee employee){
+        Employee dbEmployee=entityManager.merge(employee);
+        return dbEmployee;
+     }
+    
+
+     public void deleteById(int id){
+       Employee tempemployee=entityManager.find(Employee.class, id);
+       entityManager.remove(tempemployee);
+     }
+
+
+    
     
 }
