@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.SpringRestCrud.cruddemo.CustomExceptionClass.EmpNotFound;
 import com.SpringRestCrud.cruddemo.Dao.EmployeeDao;
 import com.SpringRestCrud.cruddemo.Entity.Employee;
 
@@ -29,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     public Employee findById(int id){
         Employee employee=employeeDao.findById(id);
         if(employee==null){
-         throw new RuntimeException("employee id not found");
+         throw new EmpNotFound("employee id not found");
         }
         return employeeDao.findById(id);
      }
