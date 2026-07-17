@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -45,5 +47,11 @@ public class EmployeeRestContoller {
     return dbEmployee;
 
     }  
+
+    @PutMapping("/employee")
+    public Employee updateEmployee(@RequestBody Employee employee){
+        Employee updateEmp=employeeService.save(employee);
+        return updateEmp;
+    }
     
 }
